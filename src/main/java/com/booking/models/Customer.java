@@ -14,4 +14,13 @@ import lombok.experimental.SuperBuilder;
 public class Customer extends Person {
     private double wallet;
     private Membership member;
+
+    public void reduceWallet(double amount) {
+        if (amount > 0 && amount <= wallet) {
+            wallet -= amount;
+        } else {
+            System.out.println("Jumlah uang yang ditarik tidak valid.");
+        }
+    }
+
 }

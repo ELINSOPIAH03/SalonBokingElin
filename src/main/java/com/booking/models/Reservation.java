@@ -34,4 +34,23 @@ public class Reservation {
     private double calculateReservationPrice(){
         return 0;
     }
+
+    @Override
+    public String toString() {
+        return String.format("Reservation[ID=%s, Customer=%s, Employee=%s, Services=%s, Price=%s, Workstage=%s]",
+                getReservationId(), getCustomer().getName(), getEmployee().getName(), printServices(getServices()),
+                getReservationPrice(), getWorkstage());
+    }
+
+    public String printServices(List<Service> services) {
+        StringBuilder result = new StringBuilder();
+        for (Service service : services) {
+            result.append(service.getServiceName()).append(", ");
+        }
+        if (result.length() > 2) {
+            result.setLength(result.length() - 2); // Menghapus koma terakhir
+        }
+        return result.toString();
+    }
+
 }
